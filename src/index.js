@@ -2,7 +2,6 @@ module.exports = function getZerosCount(number, base) {
   
 
 
-
     var primitives = [];
     var k = 2;
 
@@ -24,32 +23,30 @@ module.exports = function getZerosCount(number, base) {
     console.log(primitives);
     console.log(primitives.length);
 
-    var sum = 0;
-    var j=1;
 
+    var j=1;
+    result =[];
 
     for (i = 0; i < primitives.length; i++)
-    { //
-
-          while (number >= primitives[0]) {
-            number = parseInt(number/ primitives[i]);
-              sum = sum + number;
+    { 
+        var sum = 0;
+        var n = number;
+        while (n >= 1) {
+            var temp = parseInt(n / primitives[i]);
+            n = temp;
+            sum = sum + temp;
 
         }
         if (primitives[i]==primitives[i+1])
-        {
-            j++;
-        }
-
-
+    {
+        j++;
+    }
+        result.push(Math.floor(sum / j));
 
     }
-    console.log(j, 'j');
-    console.log(sum, '=sum');
-    if (j>3){
-        return Math.floor(sum/j);
-    }
-    else { return sum;}
+
+    console.log(result);
+       return Math.min.apply(null, result);
+
+
 }
-
-
